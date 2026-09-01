@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/core",
+                "${workspaceFolder}/gui",
+                "${workspaceFolder}/external_includes",
+                "${workspaceFolder}/external_includes/GLFW",
+                "${workspaceFolder}/gui/dear_imgui/imgui-master",
+                "${workspaceFolder}/gui/dear_imgui/imgui-master/backends"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "E:\\gcc compiler files\\mingw64\\bin\\g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}
