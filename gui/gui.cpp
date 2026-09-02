@@ -13,7 +13,8 @@
 #define NFD_OVERRIDE_RECENT_WITH_DEFAULT
 #include <nfd_glfw3.h>
 #include <nfd.h>
-// #include "window.h"
+#include "input.h"
+#include "scene_manager.h"
 
 void gui_init( GLFWwindow * window )
 {
@@ -46,10 +47,38 @@ void gui_new_frame()
 
 }
 
+void create_demo_window()
+{
+    
+    if ( g_input_state.show_gui == true )
+    {
+        ImGui::ShowDemoWindow();
+    }
+
+}
+
+
 void object_creation_window()
 {
-    //printf("OBJECT WINDOW CALLED\n");
-    ImGui::ShowDemoWindow();
+    
+    bool p_open = true;
+
+
+
+    ImGui::Begin( " object creation", &p_open);
+
+    
+        if (ImGui::Button("create_cube", ImVec2( 200, 200) ) )
+        {
+            
+            g_scene_manager.add_object_to_scene(); 
+
+        }
+        
+
+
+    ImGui::End();
+
 
 }
 
@@ -62,9 +91,6 @@ void gui_render()
     // (Your code calls glfwSwapBuffers() etc.)
 
 }
-
-
-
 
 void gui_shutdown()
 {
@@ -110,7 +136,6 @@ void set_dear_imgui_char_callback(  GLFWwindow * window, unsigned int c )
 {
     ImGui_ImplGlfw_CharCallback( window, c );
 } 
-
 
 int imgui_wants_mouse()
 {

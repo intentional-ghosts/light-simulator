@@ -190,6 +190,20 @@ build CMakeFiles/light_simulator.dir/core/renderer.cpp.obj: CXX_COMPILER__light_
   OBJECT_DIR = CMakeFiles\light_simulator.dir
   OBJECT_FILE_DIR = CMakeFiles\light_simulator.dir\core
 
+build CMakeFiles/light_simulator.dir/core/scene_manager.cpp.obj: CXX_COMPILER__light_simulator_unscanned_ E$:/light_simulator/core/scene_manager.cpp || cmake_object_order_depends_target_light_simulator
+  DEP_FILE = CMakeFiles\light_simulator.dir\core\scene_manager.cpp.obj.d
+  FLAGS = -std=c++20
+  INCLUDES = -IE:/light_simulator/core -IE:/light_simulator/gui -IE:/light_simulator/external_includes -IE:/light_simulator/external_includes/glm -IE:/light_simulator/external_includes/nativefiledialog-extended/src/include -IE:/light_simulator/gui/dear_imgui/imgui-master -IE:/light_simulator/gui/dear_imgui/imgui-master/backends -isystem E:/light_simulator/external_includes/GLFW
+  OBJECT_DIR = CMakeFiles\light_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\light_simulator.dir\core
+
+build CMakeFiles/light_simulator.dir/core/primitives.cpp.obj: CXX_COMPILER__light_simulator_unscanned_ E$:/light_simulator/core/primitives.cpp || cmake_object_order_depends_target_light_simulator
+  DEP_FILE = CMakeFiles\light_simulator.dir\core\primitives.cpp.obj.d
+  FLAGS = -std=c++20
+  INCLUDES = -IE:/light_simulator/core -IE:/light_simulator/gui -IE:/light_simulator/external_includes -IE:/light_simulator/external_includes/glm -IE:/light_simulator/external_includes/nativefiledialog-extended/src/include -IE:/light_simulator/gui/dear_imgui/imgui-master -IE:/light_simulator/gui/dear_imgui/imgui-master/backends -isystem E:/light_simulator/external_includes/GLFW
+  OBJECT_DIR = CMakeFiles\light_simulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\light_simulator.dir\core
+
 build CMakeFiles/light_simulator.dir/gui/gui.cpp.obj: CXX_COMPILER__light_simulator_unscanned_ E$:/light_simulator/gui/gui.cpp || cmake_object_order_depends_target_light_simulator
   DEP_FILE = CMakeFiles\light_simulator.dir\gui\gui.cpp.obj.d
   FLAGS = -std=c++20
@@ -205,7 +219,7 @@ build CMakeFiles/light_simulator.dir/gui/gui.cpp.obj: CXX_COMPILER__light_simula
 #############################################
 # Link the executable light_simulator.exe
 
-build light_simulator.exe: CXX_EXECUTABLE_LINKER__light_simulator_ CMakeFiles/light_simulator.dir/main.cpp.obj CMakeFiles/light_simulator.dir/core/window.c.obj CMakeFiles/light_simulator.dir/core/input.c.obj CMakeFiles/light_simulator.dir/core/shader.cpp.obj CMakeFiles/light_simulator.dir/core/texture.c.obj CMakeFiles/light_simulator.dir/core/renderer.cpp.obj CMakeFiles/light_simulator.dir/gui/gui.cpp.obj | E$:/light_simulator/external_includes/lib/libglfw3.a libglad.a external_includes/nativefiledialog-extended/src/libnfd.a libimgui.a || external_includes/nativefiledialog-extended/src/libnfd.a libglad.a libimgui.a
+build light_simulator.exe: CXX_EXECUTABLE_LINKER__light_simulator_ CMakeFiles/light_simulator.dir/main.cpp.obj CMakeFiles/light_simulator.dir/core/window.c.obj CMakeFiles/light_simulator.dir/core/input.c.obj CMakeFiles/light_simulator.dir/core/shader.cpp.obj CMakeFiles/light_simulator.dir/core/texture.c.obj CMakeFiles/light_simulator.dir/core/renderer.cpp.obj CMakeFiles/light_simulator.dir/core/scene_manager.cpp.obj CMakeFiles/light_simulator.dir/core/primitives.cpp.obj CMakeFiles/light_simulator.dir/gui/gui.cpp.obj | E$:/light_simulator/external_includes/lib/libglfw3.a libglad.a external_includes/nativefiledialog-extended/src/libnfd.a libimgui.a || external_includes/nativefiledialog-extended/src/libnfd.a libglad.a libimgui.a
   LINK_FLAGS = -mconsole -Wl,-e,mainCRTStartup
   LINK_LIBRARIES = E:/light_simulator/external_includes/lib/libglfw3.a  libglad.a  external_includes/nativefiledialog-extended/src/libnfd.a  libimgui.a  -lopengl32  -lgdi32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\light_simulator.dir

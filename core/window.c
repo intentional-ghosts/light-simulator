@@ -70,6 +70,8 @@ int window_creation(int width, int height, const char * title)
     {
         printf( "glad library didnt load" );
     }
+    
+    create_framebuffer_callback( g_window, width, height);
 
     set_error_callback(create_error_callBack );
     set_input_callback( get_window() , create_key_callback );

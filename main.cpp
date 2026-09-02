@@ -7,6 +7,7 @@
 #include "shader.h"
 #include "texture.h"
 #include "gui.h"
+#include "scene_manager.h"
 
 int main(void)
 {
@@ -28,16 +29,20 @@ int main(void)
         window_color(0.1f, 0.1f, 0.15f, 1.0f);
         window_buffer_clear();
 
-        object_creation_window(); 
+        create_demo_window();
+
+        object_creation_window();
+        
+        draw_scene();
 
 
         gui_render();
 
-    
         window_swap();
     }
 
     gui_shutdown();
+    g_scene_manager.clean_up_heap_memory(); 
     window_shutdown();
     return 0;
 }

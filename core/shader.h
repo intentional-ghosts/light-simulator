@@ -28,7 +28,7 @@ struct basic_shader
     "void main()\n"
     "{\n"
 
-      "gl_Position = projection * view * model * vec4(a_pos,1.0);\n"
+      "gl_Position = vec4(a_pos, 1.0);\n"
       "frag_color = a_color;\n"
         
     "}\n";
@@ -81,6 +81,16 @@ struct basic_shader
     glAttachShader( shader_program, fragment_shader );
 
     glLinkProgram( shader_program); 
+
+    int link_success;
+    glGetProgramiv( shader_program, GL_LINK_STATUS, &link_success );
+    if ( !link_success )
+    {
+      char info_log[512];
+      glGetProgramInfoLog( shader_program, 512, NULL, info_log );
+      printf("shader link error: %s\n", info_log);
+      
+    }
 
     glDeleteShader( vertex_shader );
     glDeleteShader( fragment_shader );

@@ -122,9 +122,13 @@ struct cube : public mesh
 
         glEnableVertexAttribArray( 1 );
 
-        shader = basic_shader(); 
 
     }
+
+    void update_model_matrix();
+    void upadte_view_matrix(); 
+    void update_perspective_matrix(); 
+
 
 };
 

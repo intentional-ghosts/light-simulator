@@ -51,6 +51,8 @@ add_executable( light_simulator
     core/shader.cpp
     core/texture.c
     core/renderer.cpp
+    core/scene_manager.cpp
+    core/primitives.cpp
     gui/gui.cpp
 )
 

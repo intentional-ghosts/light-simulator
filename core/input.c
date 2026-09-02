@@ -6,6 +6,8 @@
 
 
 #define base_force 5.0f // should be a net force for all forces acting on the object 
+input_state g_input_state = {0}; 
+
 
 // in input.c — genuinely reusable versions, no engine dependencies
 void setframebuffer( GLFWwindow *window, void ( *framebuffer_callback )( GLFWwindow*, int, int ) )
@@ -38,6 +40,8 @@ void set_input_callback( GLFWwindow * window, void(* key_callback_function)( GLF
 void create_key_callback( GLFWwindow * window, int key, int scancode, int action, int mods )
 {
 
+    
+
     set_dear_imgui_key_callback( window, key, scancode, action, mods);
 
     if ( imgui_wants_keyboard() )
@@ -51,6 +55,20 @@ void create_key_callback( GLFWwindow * window, int key, int scancode, int action
         glfwSetWindowShouldClose( window, 1 );
 
     }
+
+
+    if ( key == GLFW_KEY_V && action == GLFW_PRESS)
+    {   
+
+        g_input_state.show_gui = true;
+    }
+    
+    if ( key == GLFW_KEY_H && action == GLFW_PRESS)
+    {   
+
+        g_input_state.show_gui = false;
+    }
+
 
 }
 

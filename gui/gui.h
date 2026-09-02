@@ -18,6 +18,7 @@ extern "C" {
 
 void gui_init( GLFWwindow * window ); 
 void gui_new_frame();
+void create_demo_window();
 void object_creation_window();
 void gui_render();
 void gui_shutdown(); 
