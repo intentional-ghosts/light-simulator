@@ -14,6 +14,7 @@
 #include <nfd.h>
 #include "input.h"
 #include "scene_manager.h"
+#include <cstdio>
 
 gui_state g_gui_state; 
 
@@ -106,7 +107,9 @@ void hierarchy_window()
             {
                 ImGui::SetItemDefaultFocus(); // Focus for keyboard navigation
             }
-
+            
+           
+            
 
 
         }
@@ -122,6 +125,22 @@ void inspector_window()
     bool p_open = true; 
     ImGui::Begin(" inspector_window", &p_open );
 
+    if ( g_gui_state.current_object_selected != -1 )
+    {
+        
+
+        ImGui::InputFloat(" x position", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> position[0] );
+       
+        ImGui::InputFloat(" y position", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> position[1] );
+    
+       
+        ImGui::InputFloat(" z position", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> position[2] );
+
+
+
+    }
+    
+    
 
     ImGui::End(); 
 }

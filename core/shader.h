@@ -28,7 +28,7 @@ struct basic_shader
     "void main()\n"
     "{\n"
 
-      "gl_Position = vec4(a_pos, 1.0);\n"
+      "gl_Position =  model * vec4(a_pos, 1.0);\n"
       "frag_color = a_color;\n"
         
     "}\n";
