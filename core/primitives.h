@@ -28,7 +28,7 @@ struct cube : public mesh
     glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
     glm::vec4 color;
     basic_shader shader;
-    std::string  object_name; 
+    std::string object_name; 
     
     
 

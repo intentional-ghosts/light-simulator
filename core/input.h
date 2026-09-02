@@ -23,6 +23,9 @@ void set_cursor_pos_callback( GLFWwindow * window, void( * mouse_callback_functi
 void set_scoll_callback( GLFWwindow * window, void( * create_scollweel_callback )( GLFWwindow *, double, double ) );
 void create_scollwheel_callback( GLFWwindow * window, double xoffset, double yoffset );
 
+#if __cplusplus
+}
+#endif
 typedef struct  
 {
     bool show_gui;
@@ -33,8 +36,5 @@ typedef struct
 extern input_state g_input_state; 
 
 
-#if __cplusplus
-}
-#endif
 
 #endif

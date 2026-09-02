@@ -9,18 +9,16 @@
 #include <GLFW/glfw3native.h>
 
 
-
-
-#if __cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
-
 
 void gui_init( GLFWwindow * window ); 
 void gui_new_frame();
 void create_demo_window();
 void object_creation_window();
 void hierarchy_window();
+void inspector_window();
 void gui_render();
 void gui_shutdown(); 
 void set_dear_imgui_key_callback( GLFWwindow * window, int key, int scancode, int action, int mods );
@@ -32,8 +30,20 @@ int imgui_wants_mouse();
 int imgui_wants_keyboard();
 
 
-#if __cplusplus
+#ifdef __cplusplus
 }
+#endif
+
+
+#ifdef __cplusplus
+
+struct gui_state
+{
+    static int current_object_selected;
+};
+
+extern gui_state g_gui_state;
+
 #endif
 
 #endif

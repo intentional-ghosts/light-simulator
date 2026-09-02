@@ -31,6 +31,7 @@ int main(void)
 
         create_demo_window();
 
+        hierarchy_window();
         object_creation_window();
         
         draw_scene();

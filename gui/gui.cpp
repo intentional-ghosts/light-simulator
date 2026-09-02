@@ -7,7 +7,6 @@
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
-#include <windows.h>
 #include <string.h>
 #include "gui.h"
 #define NFD_OVERRIDE_RECENT_WITH_DEFAULT
@@ -15,6 +14,10 @@
 #include <nfd.h>
 #include "input.h"
 #include "scene_manager.h"
+
+gui_state g_gui_state; 
+
+int gui_state::current_object_selected = -1;
 
 void gui_init( GLFWwindow * window )
 {
@@ -83,9 +86,45 @@ void object_creation_window()
 
 void hierarchy_window()
 {
-    
+
+    bool p_open = true; 
+
+    ImGui::Begin( "hierarchy_window", &p_open);
+
+        ImGui::BeginListBox("create objects", ImVec2( 200,200) );
+
+        for ( int i = 0; i < g_scene_manager.object_counter; i++)
+        {
+            const bool is_selected = ( g_gui_state.current_object_selected == i ); // this gets called ever frame its const so it cant be changed inside the function 
+
+            if ( ImGui::Selectable( g_scene_manager.object_list[i] -> object_name.c_str(), is_selected) )
+            {
+                g_gui_state.current_object_selected = i; 
+            }
+
+            if (is_selected) 
+            {
+                ImGui::SetItemDefaultFocus(); // Focus for keyboard navigation
+            }
+
+
+
+        }
+
+
+        ImGui::EndListBox();
+
+    ImGui::End();
 }
 
+void inspector_window()
+{
+    bool p_open = true; 
+    ImGui::Begin(" inspector_window", &p_open );
+
+
+    ImGui::End(); 
+}
 
 void gui_render()
 {
