@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"E:/light_simulator/build/cmake_install.cmake",
-		"E:/light_simulator/build/external_includes/nativefiledialog-extended/cmake_install.cmake",
-		"E:/light_simulator/build/external_includes/nativefiledialog-extended/src/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
