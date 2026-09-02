@@ -13,6 +13,10 @@ void scene_manager::add_object_to_scene()
 
     g_scene_manager.object_list[object_counter] = new cube( 1.0f, 0.0f, 0.0f, 1.0f ); 
 
+    // name object
+    
+    g_scene_manager.object_list[object_counter] -> object_name = " object " + std::to_string(object_counter); 
+
     if ( object_counter < MAX_OBJECTS )
     {
         //printf( " counter before incrementation = %d", g_scene_manager.object_counter );

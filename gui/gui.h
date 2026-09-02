@@ -20,6 +20,7 @@ void gui_init( GLFWwindow * window );
 void gui_new_frame();
 void create_demo_window();
 void object_creation_window();
+void hierarchy_window();
 void gui_render();
 void gui_shutdown(); 
 void set_dear_imgui_key_callback( GLFWwindow * window, int key, int scancode, int action, int mods );

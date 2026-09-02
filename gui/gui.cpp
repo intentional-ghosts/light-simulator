@@ -57,7 +57,6 @@ void create_demo_window()
 
 }
 
-
 void object_creation_window()
 {
     
@@ -81,6 +80,12 @@ void object_creation_window()
 
 
 }
+
+void hierarchy_window()
+{
+    
+}
+
 
 void gui_render()
 {

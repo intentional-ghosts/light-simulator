@@ -6,6 +6,7 @@
 #include "texture.h"
 #include "shader.h"
 #include "glm/glm.hpp"
+#include <string>
 
 struct mesh 
 {
@@ -27,6 +28,7 @@ struct cube : public mesh
     glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
     glm::vec4 color;
     basic_shader shader;
+    std::string  object_name; 
     
     
 
