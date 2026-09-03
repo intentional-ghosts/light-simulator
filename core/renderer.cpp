@@ -21,15 +21,18 @@ void draw_scene( )
         cube * cube_o = g_scene_manager.object_list[i];
 
         // need to grab the uniform of the model matrix 
-        cube_o -> update_model_matrix();
-
-        GLint model_location = glGetUniformLocation( cube_o->shader.shader_program, "model");
-
-        glUseProgram( cube_o -> shader.shader_program );
-        glUniformMatrix4fv( model_location, 1, GL_FALSE, glm::value_ptr( cube_o -> model ) );
+       
 
         if ( cube_o != nullptr)
         {
+
+            cube_o -> update_model_matrix();
+
+            GLint model_location = glGetUniformLocation( cube_o -> shader.shader_program, "model");
+
+            glUseProgram( cube_o -> shader.shader_program );
+            glUniformMatrix4fv( model_location, 1, GL_FALSE, glm::value_ptr( cube_o -> model ) );
+
             glUseProgram( cube_o -> shader.shader_program );
             glBindVertexArray( cube_o -> VAO );
             glDrawElements( GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0 );
