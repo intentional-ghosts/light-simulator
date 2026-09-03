@@ -22,7 +22,7 @@ void create_mouse_cursor_callback( GLFWwindow * window, double current_xpos, dou
 void set_cursor_pos_callback( GLFWwindow * window, void( * mouse_callback_function)( GLFWwindow * , double, double) ); 
 void set_scoll_callback( GLFWwindow * window, void( * create_scollweel_callback )( GLFWwindow *, double, double ) );
 void create_scollwheel_callback( GLFWwindow * window, double xoffset, double yoffset );
-
+void camera_is_moving( );
 #if __cplusplus
 }
 #endif

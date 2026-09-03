@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 
-void draw_scene(  );
+void draw_scene( GLFWwindow * window );
 
 
 #if __cplusplus

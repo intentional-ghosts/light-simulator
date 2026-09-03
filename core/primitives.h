@@ -7,6 +7,8 @@
 #include "shader.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include <glm/ext/matrix_transform.hpp>      // Required for glm::lookAt
+#include <glm/ext/matrix_clip_space.hpp> 
 #include <string>
 
 struct mesh 
@@ -15,8 +17,7 @@ struct mesh
     GLuint VBO;
     GLuint EBO;
     glm::mat4 model;
-    glm::mat4 view;
-    glm::mat4 projection;
+   
     
 
     
@@ -28,7 +29,6 @@ struct cube : public mesh
     glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
     glm::vec3 rotation = { 0.0f, 0.0f, 0.0f };
     glm::vec4 color;
-    basic_shader shader;
     std::string object_name; 
     
     
@@ -129,11 +129,80 @@ struct cube : public mesh
     }
 
     void update_model_matrix();
-    void upadte_view_matrix(); 
-    void update_perspective_matrix(); 
+  
+    
 
 
 };
+
+
+
+struct camera
+{
+
+    glm::mat4 view;
+    glm::mat4 projection;
+    glm::vec3 camera_pos = { 0.0f, 0.0f, 3.0f };
+    glm::vec3 rotation_vector;
+    glm::vec3 cameras_x_axis;
+    glm::vec3 cameras_y_axis;
+    glm::vec3 front_direction_vector;
+    glm::vec3 target_postion_vector;
+    glm::vec3 up_direction_vector;
+
+    float window_resolution; 
+    double xoffset, yoffset;
+    float last_x_pos, last_y_pos;
+    float fov;
+    float rotation_sensitivity;
+    float yaw, pitch; 
+    
+  
+
+    camera()
+    {
+        window_resolution = 0.0f;
+        xoffset = 0.0;
+        yoffset = 0.0;
+        yaw = 0.0f;
+        pitch = 1.0f;
+        rotation_sensitivity = 0.1f;
+        fov = 60;
+        last_x_pos = 400;
+        last_y_pos = 300;
+
+    }
+
+    void update_view_matrix();
+    void update_perspective_matrix(); 
+    // must call window_resolution before update perspective because it fills the window_resolution varaible. 
+    void update_window_resolution( GLFWwindow * window ); // im probably going to need this when ever i change the size of the glfw window so ill have an if statement in the draw loop the calls this if the window resolution changes
+
+
+};
+
+
+
+
+
+
+
+
+  
+
+   
+
+
+
+    
+
+
+
+
+
+
+
+
 
 
 

@@ -3,6 +3,7 @@
 #include "input.h"
 #include <string.h>
 #include "gui.h"
+#include "scene_manager.h"
 
 
 #define base_force 5.0f // should be a net force for all forces acting on the object 
@@ -102,7 +103,7 @@ void set_cursor_pos_callback( GLFWwindow * window, void( * mouse_callback_functi
 void create_scollwheel_callback( GLFWwindow * window, double xoffset, double yoffset )
 {
 
-    
+    // camera in scene manager
 
     set_dear_imgui_scollwheel_callback( window, xoffset, yoffset);
 
@@ -111,6 +112,16 @@ void create_scollwheel_callback( GLFWwindow * window, double xoffset, double yof
         return;
     }
 
+    g_scene_manager.scene_cam.fov -= (float)yoffset;
+
+    if (  g_scene_manager.scene_cam.fov < 1.0f )
+    {
+        g_scene_manager.scene_cam.fov = 1.0f;
+    }
+    if (  g_scene_manager.scene_cam.fov > 90.0f )
+    {
+       g_scene_manager.scene_cam.fov = 90.0f; 
+    }
     
 
 
@@ -119,4 +130,33 @@ void create_scollwheel_callback( GLFWwindow * window, double xoffset, double yof
 void set_scoll_callback( GLFWwindow * window, void( * create_scollweel_callback )( GLFWwindow *, double, double ) )
 {
     glfwSetScrollCallback( window, create_scollweel_callback );
+}
+
+void camera_is_moving( ) 
+{
+
+   // camera exists in the scene manager
+
+    float x_offset =  g_scene_manager.scene_cam.xoffset - g_scene_manager.scene_cam.last_x_pos;  
+    float y_offset = g_scene_manager.scene_cam.last_y_pos - g_scene_manager.scene_cam.yoffset; 
+
+    g_scene_manager.scene_cam.last_x_pos =  g_scene_manager.scene_cam.xoffset;
+    g_scene_manager.scene_cam.last_y_pos =  g_scene_manager.scene_cam.yoffset;
+
+    x_offset *= g_scene_manager.scene_cam.rotation_sensitivity;
+    y_offset *= g_scene_manager.scene_cam.rotation_sensitivity; 
+
+    g_scene_manager.scene_cam.yaw += x_offset; 
+    g_scene_manager.scene_cam.pitch += y_offset; 
+
+    if(  g_scene_manager.scene_cam.pitch > 89.0f)
+    {
+        g_scene_manager.scene_cam.pitch = 89.0f;
+    }
+
+    if ( g_scene_manager.scene_cam.pitch < -89.0f)
+    {
+        g_scene_manager.scene_cam.pitch = -89.0f;
+    }
+
 }

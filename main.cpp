@@ -22,12 +22,19 @@ int main(void)
 
     while (!glfwWindowShouldClose(get_window()))
     {
-       
+        
+        g_scene_manager.current_frame = glfwGetTime(); 
+        //currect_frame - last_frame;  
+      
+
         window_poll();
         gui_new_frame();
         // rendering will go here later
         window_color(0.1f, 0.1f, 0.15f, 1.0f);
         window_buffer_clear();
+
+
+        camera_is_moving( );
 
         create_demo_window();
 
@@ -35,7 +42,7 @@ int main(void)
         inspector_window();
         object_creation_window();
         
-        draw_scene();
+        draw_scene( get_window() );
 
 
         gui_render();
