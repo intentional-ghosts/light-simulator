@@ -8,6 +8,7 @@
 #include "texture.h"
 #include "gui.h"
 #include "scene_manager.h"
+#include "build/config.h"
 
 int main(void)
 {
@@ -38,6 +39,8 @@ int main(void)
         window_color(0.1f, 0.1f, 0.15f, 1.0f);
         window_buffer_clear();
 
+        #ifdef  IS_COMPUTER
+
         processing_keyboard_input( get_window( ) ); 
         
         if ( g_input_state.mouse_clicked )
@@ -51,6 +54,11 @@ int main(void)
         {
             camera_is_moving( );
         };
+
+        #endif
+
+        
+        
 
         create_demo_window();
 

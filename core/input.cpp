@@ -1,6 +1,6 @@
 
 #include "input.h"
-
+#include "config.h"
 
 #define base_force 5.0f // should be a net force for all forces acting on the object 
 input_state g_input_state = {0}; 
@@ -26,6 +26,9 @@ void mouse_button_callback( GLFWwindow *window, int button, int action, int mods
 {
     set_dear_imgui_mouse_button_callback( window, button, action, mods );
     
+    
+    #ifdef IS_COMPUTER
+
     if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS )
     {
         g_scene_manager.scene_cam.camera_is_moving = true;
@@ -39,6 +42,9 @@ void mouse_button_callback( GLFWwindow *window, int button, int action, int mods
         glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );    
 
     }
+
+    #endif
+
 
 }
 
@@ -81,6 +87,24 @@ void create_key_callback( GLFWwindow * window, int key, int scancode, int action
         g_input_state.show_gui = false;
     }
 
+
+    #ifdef IS_LAPTOP
+    
+    if ( key == GLFW_KEY_G && action == GLFW_PRESS )
+    {
+        g_scene_manager.scene_cam.camera_is_moving = true;
+        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
+        g_input_state.mouse_clicked = true;
+    }
+
+    if ( key == GLFW_KEY_G && action == GLFW_PRESS)
+    {
+        g_scene_manager.scene_cam.camera_is_moving = false; 
+        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );    
+
+    }
+    
+    #endif
 
 }
 
