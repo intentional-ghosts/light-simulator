@@ -102,6 +102,7 @@ void hierarchy_window()
             {
                 g_gui_state.current_object_selected = i; 
             }
+            
 
             if (is_selected) 
             {
@@ -133,8 +134,23 @@ void inspector_window()
        
         ImGui::InputFloat(" y position", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> position[1] );
     
-       
         ImGui::InputFloat(" z position", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> position[2] );
+
+        ImGui::Spacing();
+
+        ImGui::InputFloat(" scale x", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> scale[0] );
+       
+        ImGui::InputFloat(" scale y", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> scale[1] );
+    
+        ImGui::InputFloat(" scale z", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> scale[2] );
+
+        ImGui::Spacing();
+
+        ImGui::InputFloat(" rotation x", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> rotation[0] );
+       
+        ImGui::InputFloat(" rotation y", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> rotation[1] );
+    
+        ImGui::InputFloat(" rotation z", &g_scene_manager.object_list[ g_gui_state.current_object_selected] -> rotation[2] );
 
 
 
