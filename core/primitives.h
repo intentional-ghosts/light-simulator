@@ -1,19 +1,19 @@
 #ifndef primitives_h
 #define primitives_h
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <stdbool.h>
-#include "texture.h"
-#include "shader.h"
 #include "glm/glm.hpp"
+#include <glm/geometric.hpp> // Explicitly includes vector geometry function
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/ext/matrix_transform.hpp>      // Required for glm::lookAt
 #include <glm/ext/matrix_clip_space.hpp> 
 #include <string>
 #include <cstdio>
-#include "primitives.h"
-#include "scene_manager.h"
-#include "gui.h"
+
+
 
 struct mesh 
 {
@@ -150,9 +150,9 @@ struct camera
     glm::vec3 rotation_vector;
     glm::vec3 cameras_x_axis;
     glm::vec3 cameras_y_axis;
-    glm::vec3 front_direction_vector;
+    glm::vec3 front_direction_vector = { 0.0f, 0.0f, -3.0f };
     glm::vec3 target_postion_vector;
-    glm::vec3 up_direction_vector;
+    glm::vec3 up_direction_vector = { 0.0f, 1.0f, 0.0f };
 
     float window_resolution; 
     double xoffset, yoffset;
@@ -160,23 +160,16 @@ struct camera
     float fov;
     float rotation_sensitivity;
     float yaw, pitch; 
-    
-  
+    float camera_speed;
+    bool camera_is_moving; 
 
     camera()
     {
-        window_resolution = 0.0f;
-        xoffset = 0.0;
-        yoffset = 0.0;
-        yaw = 0.0f;
-        pitch = 1.0f;
-        rotation_sensitivity = 0.1f;
-        fov = 60;
-        last_x_pos = 400;
-        last_y_pos = 300;
-
+       
+        
     }
 
+    void init_camera_data(); 
     void update_view_matrix();
     void update_perspective_matrix(); 
     // must call window_resolution before update perspective because it fills the window_resolution varaible. 

@@ -14,9 +14,7 @@
 
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 
 void glfw_library_init( void );
 void set_error_callback( void (* errorcallback)( int, const char * ));
@@ -31,8 +29,6 @@ GLFWwindow * get_window( void );
 HWND get_hwnd( void );
 void load_glad( void ); 
 
-#if __cplusplus
-}
-#endif
+
 
 #endif

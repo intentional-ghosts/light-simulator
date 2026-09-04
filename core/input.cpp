@@ -24,7 +24,22 @@ void create_framebuffer_callback( GLFWwindow *window, int width, int height )
 
 void mouse_button_callback( GLFWwindow *window, int button, int action, int mods )
 {
-    set_dear_imgui_mouse_button_callback( window, button, action, mods ); 
+    set_dear_imgui_mouse_button_callback( window, button, action, mods );
+    
+    if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS )
+    {
+        g_scene_manager.scene_cam.camera_is_moving = true;
+        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
+        g_input_state.mouse_clicked = true;
+    }
+
+    if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
+    {
+        g_scene_manager.scene_cam.camera_is_moving = false; 
+        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );    
+
+    }
+
 }
 
 void set_input_callback( GLFWwindow * window, void(* key_callback_function)( GLFWwindow *, int, int, int ,int ))
@@ -89,6 +104,10 @@ void create_mouse_cursor_callback( GLFWwindow * window ,double current_x_pos, do
         return;
     }
 
+    g_scene_manager.scene_cam.xoffset = current_x_pos;
+    g_scene_manager.scene_cam.yoffset = currect_y_pos;
+
+
 } 
 
 void set_cursor_pos_callback( GLFWwindow * window, void( * mouse_callback_function)( GLFWwindow * , double, double) )
@@ -128,6 +147,67 @@ void set_scoll_callback( GLFWwindow * window, void( * create_scollweel_callback 
     glfwSetScrollCallback( window, create_scollweel_callback );
 }
 
+void processing_keyboard_input( GLFWwindow * window )
+{
+
+    g_scene_manager.scene_cam.camera_speed = 3.0 * g_scene_manager.delta_time; 
+    //printf(" camera speed = %f",g_scene_manager.scene_cam.camera_speed );
+    glm::vec3 result; 
+
+    if ( glfwGetKey( window, GLFW_KEY_W ) == GLFW_PRESS ) 
+    {
+        //printf( " camera pos before x = %f, y = %f, z = %f \n", g_scene_manager.scene_cam.camera_pos[0], g_scene_manager.scene_cam.camera_pos[1], g_scene_manager.scene_cam.camera_pos[2] );
+        //printf( " rotation_vector before x = %f, y = %f, z = %f \n", g_scene_manager.scene_cam.rotation_vector[0], g_scene_manager.scene_cam.rotation_vector[1], g_scene_manager.scene_cam.rotation_vector[2] );
+
+        result = g_scene_manager.scene_cam.rotation_vector * g_scene_manager.scene_cam.camera_speed;
+
+        //printf( " rotation_vector before x = %f, y = %f, z = %f \n", result[0], result[1], result[2] );
+
+        g_scene_manager.scene_cam.camera_pos += result;  
+
+        //printf( " camera pos after x = %f, y = %f, z = %f \n", g_scene_manager.scene_cam.camera_pos[0], g_scene_manager.scene_cam.camera_pos[1], g_scene_manager.scene_cam.camera_pos[2] );
+
+    }
+
+    if (glfwGetKey( window, GLFW_KEY_S ) ==  GLFW_PRESS )
+    {
+        result = g_scene_manager.scene_cam.rotation_vector * g_scene_manager.scene_cam.camera_speed;
+        g_scene_manager.scene_cam.camera_pos -= result; 
+
+    }
+
+    if ( glfwGetKey( window, GLFW_KEY_A ) ==  GLFW_PRESS )
+    {
+        result = g_scene_manager.scene_cam.cameras_x_axis * g_scene_manager.scene_cam.camera_speed;
+        g_scene_manager.scene_cam.camera_pos -= result; 
+    }
+
+    if ( glfwGetKey( window, GLFW_KEY_D ) ==  GLFW_PRESS )
+    {
+        result = g_scene_manager.scene_cam.cameras_x_axis * g_scene_manager.scene_cam.camera_speed;
+        g_scene_manager.scene_cam.camera_pos += result; 
+    }
+    
+
+    bool ctrlPressed = ( glfwGetKey( window, GLFW_KEY_LEFT_CONTROL ) == GLFW_PRESS || glfwGetKey( window, GLFW_KEY_RIGHT_CONTROL ) == GLFW_PRESS );
+
+    if ( ctrlPressed && glfwGetKey( window, GLFW_KEY_Q ) == GLFW_PRESS  )
+    {
+        result = g_scene_manager.scene_cam.cameras_y_axis * g_scene_manager.scene_cam.camera_speed;
+        g_scene_manager.scene_cam.camera_pos += result; 
+    }
+    
+
+    if ( ctrlPressed && glfwGetKey( window, GLFW_KEY_E ) ==  GLFW_PRESS  )
+    {
+        result = g_scene_manager.scene_cam.cameras_y_axis * g_scene_manager.scene_cam.camera_speed;
+        g_scene_manager.scene_cam.camera_pos -= result; 
+    }
+    
+
+
+}
+
 void camera_is_moving( ) 
 {
 
@@ -154,5 +234,6 @@ void camera_is_moving( )
     {
         g_scene_manager.scene_cam.pitch = -89.0f;
     }
+
 
 }

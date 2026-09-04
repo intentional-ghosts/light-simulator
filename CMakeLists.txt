@@ -46,10 +46,10 @@ target_include_directories(imgui PRIVATE
 # ---- Your app ----
 add_executable( light_simulator
     main.cpp
-    core/window.c
-    core/input.c
+    core/window.cpp
+    core/input.cpp
     core/shader.cpp
-    core/texture.c
+    core/texture.cpp
     core/renderer.cpp
     core/scene_manager.cpp
     core/primitives.cpp

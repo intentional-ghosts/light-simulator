@@ -1,6 +1,8 @@
 
 
 #include "primitives.h"
+#include "scene_manager.h"
+#include "gui.h"
 
 
 
@@ -28,20 +30,35 @@ void cube::update_model_matrix()
 
 }
 
+
+void camera::init_camera_data()
+{
+    window_resolution = 0.0f;
+    xoffset = 0.0;
+    yoffset = 0.0;
+    yaw = 0.0f;
+    pitch = 1.0f;
+    rotation_sensitivity = 0.1f;
+    fov = 60;
+    last_x_pos = 400;
+    last_y_pos = 300;
+    camera_is_moving = false; 
+}
+
 void camera::update_view_matrix()
 {
 
-    glm::vec3 rotation_vector = { sin( glm::radians( yaw ) ) * cos( glm::radians( pitch ) ), sin( glm::radians( pitch ) ), -cos( glm::radians( yaw ) ) * cos( glm::radians( pitch ) ) }; 
+    rotation_vector = { sin( glm::radians( yaw ) ) * cos( glm::radians( pitch ) ), sin( glm::radians( pitch ) ), -cos( glm::radians( yaw ) ) * cos( glm::radians( pitch ) ) }; 
 
-    glm::normalize( rotation_vector );
+    rotation_vector = glm::normalize( rotation_vector );
 
 
     cameras_x_axis = glm::cross( rotation_vector, up_direction_vector );
         
     cameras_y_axis = glm::cross( cameras_x_axis,  front_direction_vector );
 
-    glm::normalize( cameras_x_axis );
-    glm::normalize( cameras_y_axis );
+    cameras_x_axis = glm::normalize( cameras_x_axis );
+    cameras_y_axis = glm::normalize( cameras_y_axis );
 
     target_postion_vector = camera_pos + rotation_vector;
 
@@ -53,7 +70,6 @@ void camera::update_view_matrix()
    
 
 }
-
 
 void camera::update_perspective_matrix()
 {

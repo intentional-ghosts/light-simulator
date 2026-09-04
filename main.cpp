@@ -20,11 +20,16 @@ int main(void)
 
     gui_init(get_window());
 
+    g_scene_manager.init_scene_manager(); 
+    g_scene_manager.shader.init_shader_data();
+    g_scene_manager.scene_cam.init_camera_data();
+
     while (!glfwWindowShouldClose(get_window()))
     {
         
         g_scene_manager.current_frame = glfwGetTime(); 
-        //currect_frame - last_frame;  
+        g_scene_manager.delta_time =  g_scene_manager.current_frame - g_scene_manager.last_frame;  
+        g_scene_manager.last_frame =  g_scene_manager.current_frame; 
       
 
         window_poll();
@@ -33,8 +38,19 @@ int main(void)
         window_color(0.1f, 0.1f, 0.15f, 1.0f);
         window_buffer_clear();
 
+        processing_keyboard_input( get_window( ) ); 
+        
+        if ( g_input_state.mouse_clicked )
+        {  
+            g_scene_manager.scene_cam.last_x_pos = g_scene_manager.scene_cam.xoffset;
+            g_scene_manager.scene_cam.last_y_pos = g_scene_manager.scene_cam.yoffset;
+            g_input_state.mouse_clicked = false;
+        }
 
-        camera_is_moving( );
+        if( g_scene_manager.scene_cam.camera_is_moving )
+        {
+            camera_is_moving( );
+        };
 
         create_demo_window();
 

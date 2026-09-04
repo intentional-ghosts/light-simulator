@@ -6,6 +6,16 @@ scene_manager g_scene_manager;
 
 int scene_manager::object_counter = 0; 
   
+
+void scene_manager::init_scene_manager()
+{
+
+    delta_time = 0.0f;
+    last_frame = 0.0f;
+    
+}
+
+
 void scene_manager::add_object_to_scene()
 {
     
@@ -29,7 +39,6 @@ void scene_manager::add_object_to_scene()
      
 
 }
-
 
 void scene_manager::clean_up_heap_memory()
 {

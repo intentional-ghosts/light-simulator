@@ -1,19 +1,16 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <stdbool.h>
-#include "gui.h"
 #include <stdio.h>
 #include <string.h>
-#include "gui.h"
 #include "scene_manager.h"
+#include "gui.h"
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 void setframebuffer(GLFWwindow *window, void (*framebuffer_callback)(GLFWwindow*, int, int) );
 void SetMouseButtonCallback(GLFWwindow *window, void (*mouse_button_callback)(GLFWwindow*, int, int, int) );
@@ -28,13 +25,13 @@ void set_cursor_pos_callback( GLFWwindow * window, void( * mouse_callback_functi
 void set_scoll_callback( GLFWwindow * window, void( * create_scollweel_callback )( GLFWwindow *, double, double ) );
 void create_scollwheel_callback( GLFWwindow * window, double xoffset, double yoffset );
 void camera_is_moving( );
-#if __cplusplus
-}
-#endif
+void processing_keyboard_input( GLFWwindow * window);
+
 typedef struct  
 {
     bool show_gui;
-
+    bool mouse_clicked;
+    
 
 } input_state;
 

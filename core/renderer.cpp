@@ -35,7 +35,7 @@ void draw_scene( GLFWwindow * window )
             glUniformMatrix4fv( view_location, 1, GL_FALSE, glm::value_ptr( g_scene_manager.scene_cam.view ) );
 
             GLint prospective_location = glGetUniformLocation(g_scene_manager.shader.shader_program, "projection");
-
+            
             glUseProgram( g_scene_manager.shader.shader_program );
             glUniformMatrix4fv( prospective_location, 1, GL_FALSE, glm::value_ptr( g_scene_manager.scene_cam.projection ) );
 
