@@ -71,13 +71,22 @@ void object_creation_window()
     ImGui::Begin( " object creation", &p_open);
 
     
-        if (ImGui::Button("create_cube", ImVec2( 200, 200) ) )
+        if (ImGui::Button("create_cube", ImVec2( 200, 100) ) )
         {
             
             g_scene_manager.add_object_to_scene(); 
 
         }
         
+
+        
+        if (ImGui::Button("create_light", ImVec2( 200, 100) ) )
+        {
+            
+            g_scene_manager.add_light_to_scene(); 
+
+        }
+
 
 
     ImGui::End();

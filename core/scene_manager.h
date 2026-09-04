@@ -12,15 +12,20 @@
 #include <cstdio>
 
 constexpr int MAX_OBJECTS = 100;
+constexpr int MAX_LIGHT_OBJECTS = 100; 
 
 struct scene_manager
 {
 
-  static int object_counter;
+  static int object_counter; // needed to update the model matrix
+  static int light_counter;  // needed to update the model matrix
+  static int object_in_existence; // used in the draw_scene_function so you know how many object exist. 
+
   float current_frame;
   float last_frame;
   float delta_time;
   cube * object_list[ MAX_OBJECTS ] = { nullptr }; 
+  light * light_list[ MAX_LIGHT_OBJECTS ] = { nullptr };
   camera scene_cam;
   basic_shader shader;
 
@@ -32,7 +37,8 @@ struct scene_manager
   }
 
   void init_scene_manager(); 
-  void add_object_to_scene( ); 
+  void add_object_to_scene( );
+  void add_light_to_scene( ); 
   void clean_up_heap_memory( ); 
 
    
