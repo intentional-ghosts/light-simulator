@@ -41,23 +41,42 @@ int main(void)
 
         #ifdef  IS_COMPUTER
 
-        processing_keyboard_input( get_window( ) ); 
+            processing_keyboard_input( get_window( ) ); 
         
-        if ( g_input_state.mouse_clicked )
-        {  
-            g_scene_manager.scene_cam.last_x_pos = g_scene_manager.scene_cam.xoffset;
-            g_scene_manager.scene_cam.last_y_pos = g_scene_manager.scene_cam.yoffset;
-            g_input_state.mouse_clicked = false;
-        }
+            if ( g_input_state.mouse_clicked )
+            {  
+                g_scene_manager.scene_cam.last_x_pos = g_scene_manager.scene_cam.xoffset;
+                g_scene_manager.scene_cam.last_y_pos = g_scene_manager.scene_cam.yoffset;
+                g_input_state.mouse_clicked = false;
+            }
 
-        if( g_scene_manager.scene_cam.camera_is_moving )
-        {
-            camera_is_moving( );
-        };
+            if( g_scene_manager.scene_cam.camera_is_moving )
+            {
+                camera_is_moving( );
+            };
 
         #endif
 
         
+        #ifdef  IS_LAPTOP
+
+            processing_keyboard_input( get_window( ) ); 
+        
+            if ( g_input_state.mouse_clicked )
+            {  
+                g_scene_manager.scene_cam.last_x_pos = g_scene_manager.scene_cam.xoffset;
+                g_scene_manager.scene_cam.last_y_pos = g_scene_manager.scene_cam.yoffset;
+                g_input_state.mouse_clicked = false;
+            }
+
+            if( g_scene_manager.scene_cam.camera_is_moving )
+            {
+                camera_is_moving( );
+            };
+           
+
+        #endif
+
         
 
         create_demo_window();

@@ -29,19 +29,19 @@ void mouse_button_callback( GLFWwindow *window, int button, int action, int mods
     
     #ifdef IS_COMPUTER
 
-    if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS )
-    {
-        g_scene_manager.scene_cam.camera_is_moving = true;
-        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
-        g_input_state.mouse_clicked = true;
-    }
+        if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS )
+        {
+            g_scene_manager.scene_cam.camera_is_moving = true;
+            glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
+            g_input_state.mouse_clicked = true;
+        }
 
-    if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
-    {
-        g_scene_manager.scene_cam.camera_is_moving = false; 
-        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );    
+        if ( button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
+        {
+            g_scene_manager.scene_cam.camera_is_moving = false; 
+            glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );    
 
-    }
+        }
 
     #endif
 
@@ -90,19 +90,21 @@ void create_key_callback( GLFWwindow * window, int key, int scancode, int action
 
     #ifdef IS_LAPTOP
     
-    if ( key == GLFW_KEY_G && action == GLFW_PRESS )
-    {
-        g_scene_manager.scene_cam.camera_is_moving = true;
-        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
-        g_input_state.mouse_clicked = true;
-    }
+        if ( key == GLFW_KEY_G && action == GLFW_PRESS )
+        {
+            g_scene_manager.scene_cam.camera_is_moving = true;
+            glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
+            g_input_state.mouse_clicked = true;
+            
+        }
 
-    if ( key == GLFW_KEY_G && action == GLFW_PRESS)
-    {
-        g_scene_manager.scene_cam.camera_is_moving = false; 
-        glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );    
+        if ( key == GLFW_KEY_G && mods == GLFW_MOD_CONTROL && action == GLFW_PRESS)
+        {
+           
+            g_scene_manager.scene_cam.camera_is_moving = false; 
+            glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );     
 
-    }
+        }
     
     #endif
 
