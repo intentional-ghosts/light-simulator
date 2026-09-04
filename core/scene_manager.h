@@ -10,6 +10,8 @@
 #include "shader.h"
 #include "texture.h"
 #include "primitives.h"
+#include "scene_manager.h"
+#include <cstdio>
 
 constexpr int MAX_OBJECTS = 100;
 

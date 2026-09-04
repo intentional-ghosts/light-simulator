@@ -1,13 +1,5 @@
 
 #include "renderer.h"
-#include "primitives.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "shader.h"
-#include "texture.h"
-#include "scene_manager.h"
-#include <glm/gtc/type_ptr.hpp>
 
 
 

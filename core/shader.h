@@ -1,8 +1,9 @@
 
 #ifndef SHADER_H
 #define SHADER_H
+
 #include <glad/glad.h>
-#include <cstdio>
+//#include <cstdio>
 
 
 struct basic_shader
@@ -58,7 +59,7 @@ struct basic_shader
     if(!success)
     {
       glGetShaderInfoLog( vertex_shader, 512, NULL, info_log);
-      printf("vertex shader error: %s\n", info_log);
+      //std::printf("vertex shader error: %s\n", info_log);
     }
 
 
@@ -70,7 +71,7 @@ struct basic_shader
     if(!success)
     {
         glGetShaderInfoLog(fragment_shader, 512, NULL, info_log);
-        printf("fragment shader error: %s\n", info_log);
+        //std::printf("fragment shader error: %s\n", info_log);
     }
 
 
@@ -88,7 +89,7 @@ struct basic_shader
     {
       char info_log[512];
       glGetProgramInfoLog( shader_program, 512, NULL, info_log );
-      printf("shader link error: %s\n", info_log);
+      //std::printf("shader link error: %s\n", info_log);
       
     }
 

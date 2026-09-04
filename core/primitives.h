@@ -10,6 +10,10 @@
 #include <glm/ext/matrix_transform.hpp>      // Required for glm::lookAt
 #include <glm/ext/matrix_clip_space.hpp> 
 #include <string>
+#include <cstdio>
+#include "primitives.h"
+#include "scene_manager.h"
+#include "gui.h"
 
 struct mesh 
 {

@@ -1,8 +1,9 @@
-#include "primitives.h"
+
 #include "scene_manager.h"
-#include <cstdio>
+
 
 scene_manager g_scene_manager; 
+
 int scene_manager::object_counter = 0; 
   
 void scene_manager::add_object_to_scene()
@@ -11,11 +12,11 @@ void scene_manager::add_object_to_scene()
 
     //printf(" working");
 
-    g_scene_manager.object_list[object_counter] = new cube( 1.0f, 0.0f, 0.0f, 1.0f ); 
+    g_scene_manager.object_list[ object_counter ] = new cube( 1.0f, 0.0f, 0.0f, 1.0f ); 
 
     // name object
     
-    g_scene_manager.object_list[object_counter] -> object_name = " object " + std::to_string(object_counter); 
+    g_scene_manager.object_list[ object_counter ] -> object_name = " object " + std::to_string( object_counter ); 
 
     if ( object_counter < MAX_OBJECTS )
     {

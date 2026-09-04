@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <glad/glad.h>
+
 #include "input.h"
-#include <string.h>
-#include "gui.h"
-#include "scene_manager.h"
 
 
 #define base_force 5.0f // should be a net force for all forces acting on the object 

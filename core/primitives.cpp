@@ -1,9 +1,6 @@
-#include <cstdio>
+
+
 #include "primitives.h"
-#include "scene_manager.h"
-#include "gui.h"
-
-
 
 
 
@@ -39,18 +36,18 @@ void camera::update_view_matrix()
     glm::normalize( rotation_vector );
 
 
-    glm::cross(rotation_vector, up_direction_vector,  cameras_x_axis );
+    cameras_x_axis = glm::cross( rotation_vector, up_direction_vector );
         
-    glm::cross( cameras_x_axis,  front_direction_vector, cameras_y_axis);
+    cameras_y_axis = glm::cross( cameras_x_axis,  front_direction_vector );
 
     glm::normalize( cameras_x_axis );
     glm::normalize( cameras_y_axis );
 
     target_postion_vector = camera_pos + rotation_vector;
 
-    view = glm::mat4(1.0f)
+    view = glm::mat4(1.0f);
 
-    glm::lookat( camera_pos,  cameras_target_postion_vector,  up_direction_vector_reference,  view );
+    view = glm::lookAt( camera_pos,  target_postion_vector,  up_direction_vector );
         
 
    
@@ -63,7 +60,7 @@ void camera::update_perspective_matrix()
 
     projection = glm::mat4(1.0f);
 
-    glm::perspective( glm::radians( fov ), window_resolution ,0.1f ,100.0f,  projection );
+    projection = glm::perspective( glm::radians( fov ), window_resolution ,     0.1f ,100.0f);
 
 
 } 

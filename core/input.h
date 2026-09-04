@@ -2,8 +2,13 @@
 #define INPUT_H
 
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 #include <stdbool.h>
 #include "gui.h"
+#include <stdio.h>
+#include <string.h>
+#include "gui.h"
+#include "scene_manager.h"
 
 
 #ifdef __cplusplus

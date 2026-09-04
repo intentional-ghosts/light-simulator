@@ -1,4 +1,4 @@
-#include <cstdio>
+//#include <cstdio>
 #include <cstdlib>
 #include "window.h"
 #include "input.h"
