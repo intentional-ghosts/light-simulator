@@ -61,6 +61,7 @@ target_include_directories( light_simulator PRIVATE
     gui
     external_includes
     external_includes/glm
+    ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 target_link_libraries( light_simulator PRIVATE

@@ -9,6 +9,8 @@
 #include <string.h>
 #include "scene_manager.h"
 #include "gui.h"
+#include "config.h"
+
 
 
 

@@ -8,7 +8,7 @@
 #include "texture.h"
 #include "gui.h"
 #include "scene_manager.h"
-#include "build/config.h"
+#include "config.h"
 
 int main(void)
 {

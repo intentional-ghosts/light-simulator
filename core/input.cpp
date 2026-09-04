@@ -1,6 +1,6 @@
 
 #include "input.h"
-#include "config.h"
+
 
 #define base_force 5.0f // should be a net force for all forces acting on the object 
 input_state g_input_state = {0}; 
