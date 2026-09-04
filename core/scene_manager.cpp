@@ -34,7 +34,7 @@ void scene_manager::add_object_to_scene()
         //printf( " counter before incrementation = %d", g_scene_manager.object_counter );
         g_scene_manager.object_counter += 1; 
         g_scene_manager.object_in_existence += 1;  
-        printf(" object_in_existence %d", g_scene_manager.object_in_existence);
+        //printf(" object_in_existence %d", g_scene_manager.object_in_existence);
         //printf( "counter = %d ", g_scene_manager.object_counter );
     }
 
@@ -47,7 +47,7 @@ void scene_manager::add_object_to_scene()
 void scene_manager::add_light_to_scene( )
 {
 
-     //printf(" working");
+    //printf(" working");
 
     g_scene_manager.light_list[ light_counter ] = new light(); 
 
@@ -60,11 +60,11 @@ void scene_manager::add_light_to_scene( )
         //printf( " counter before incrementation = %d", g_scene_manager.light_counter );
         g_scene_manager.light_counter += 1;   
         g_scene_manager.object_in_existence += 1;  
-        printf(" object_in_existence %d", g_scene_manager.object_in_existence);
+        //printf(" object_in_existence %d", g_scene_manager.object_in_existence);
         //printf( "counter = %d ", g_scene_manager.light_counter );
     }
 
-  }
+}
 
 void scene_manager::clean_up_heap_memory()
 {

@@ -150,7 +150,7 @@ struct light : public mesh
     
     
 
-    light( float red = 1.0f, float green= 1.0f, float blue = 1.0f, float alpha = 1.0f)
+    light( float red = 1.0f, float green= 1.0f, float blue = 1.0f, float alpha = 1.0f )
     {
 
         color = glm::vec4(red, green, blue, alpha); 

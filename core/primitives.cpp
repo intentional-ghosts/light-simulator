@@ -32,23 +32,27 @@ void cube::update_model_matrix()
 void light::update_light_model_matrix()
 {
 
-        for ( int i = 0; i < g_scene_manager.light_counter; i++)
-        {
-            glm::vec3 position = glm::vec3( g_scene_manager.light_list[i] -> position);
-            glm::vec3 scale = glm::vec3( g_scene_manager.light_list[i] -> scale);
-            glm::vec3 rotation = glm::vec3( g_scene_manager.light_list[i] -> rotation);
-            g_scene_manager.light_list[i] -> model = glm::mat4(1.0f);
+    for ( int i = 0; i < g_scene_manager.light_counter; i++)
+    {
+        glm::vec3 position = glm::vec3( g_scene_manager.light_list[i] -> position);
+        
+        glm::vec3 scale = glm::vec3( g_scene_manager.light_list[i] -> scale);
 
-            g_scene_manager.light_list[i] -> model = glm::scale( g_scene_manager.light_list[i] -> model , scale );
+        glm::vec3 rotation = glm::vec3( g_scene_manager.light_list[i] -> rotation);
+        
+        g_scene_manager.light_list[i] -> model = glm::mat4(1.0f);
 
-            g_scene_manager.light_list[i] -> model  = glm::rotate( g_scene_manager.light_list[i] -> model, glm::radians( g_scene_manager.light_list[i] -> rotation[0] ), glm::vec3 ( 1.0f, 0.0f, 0.0f ) );
-            g_scene_manager.light_list[i] -> model  = glm::rotate( g_scene_manager.light_list[i] -> model, glm::radians( g_scene_manager.light_list[i] -> rotation[1] ), glm::vec3 ( 0.0f, 1.0f, 0.0f ) );
-            g_scene_manager.light_list[i] -> model  = glm::rotate( g_scene_manager.light_list[i] -> model, glm::radians( g_scene_manager.light_list[i] -> rotation[2] ), glm::vec3 ( 0.0f, 0.0f, 1.0f ) );
+        g_scene_manager.light_list[i] -> model = glm::scale( g_scene_manager.light_list[i] -> model , scale );
 
-            g_scene_manager.light_list[i] -> model = glm::translate( g_scene_manager.light_list[i] -> model , position );
-            
+        g_scene_manager.light_list[i] -> model  = glm::rotate( g_scene_manager.light_list[i] -> model, glm::radians( g_scene_manager.light_list[i] -> rotation[0] ), glm::vec3 ( 1.0f, 0.0f, 0.0f ) );
 
-        }
+        g_scene_manager.light_list[i] -> model  = glm::rotate( g_scene_manager.light_list[i] -> model, glm::radians( g_scene_manager.light_list[i] -> rotation[1] ), glm::vec3 ( 0.0f, 1.0f, 0.0f ) );
+        
+        g_scene_manager.light_list[i] -> model  = glm::rotate( g_scene_manager.light_list[i] -> model, glm::radians( g_scene_manager.light_list[i] -> rotation[2] ), glm::vec3 ( 0.0f, 0.0f, 1.0f ) );
+
+        g_scene_manager.light_list[i] -> model = glm::translate( g_scene_manager.light_list[i] -> model , position );
+        
+    }
 }
 
 

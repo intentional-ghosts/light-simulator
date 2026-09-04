@@ -73,6 +73,8 @@ int window_creation(int width, int height, const char * title)
         printf( "glad library didnt load" );
     }
     
+    glEnable( GL_DEPTH_TEST ); 
+
     create_framebuffer_callback( g_window, width, height);
 
     set_error_callback(create_error_callBack );
@@ -91,7 +93,7 @@ int window_creation(int width, int height, const char * title)
 
 void load_glad()
 {
-    
+   
 }
 
 void window_poll(void)
